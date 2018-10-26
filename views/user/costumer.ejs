@@ -1,4 +1,4 @@
-<%- include ../layouts/header.ejs %>	
+<%- include ../layouts/header.ejs %>
 
 <% if (messages.error) { %>
 	<p style="color:red"><%- messages.error %></p>
@@ -6,28 +6,52 @@
 
 <% if (messages.success) { %>
 	<p style="color:green"><%- messages.success %></p>
-<% } %>
+<% } %>	
+<div class="container-fluid text-center" style="height: 100hv; width: 100% ">    
+	<div class="row content">
+	  <div class="col-sm-2 sidenav">
+		<p><a href="#">Link</a></p>
+		<p><a href="#">Link</a></p>
+		<p><a href="#">Link</a></p>
+	  </div>
+	  <!--content -->
+	  <div class="col-sm-8 text-left"> 
+		  <h1>Active Logs</h1>
+		<table id="customer" width='80%' border=0>
 
-<form action="/" method="post" name="form1">
-	<table width="25%" border="0">
-		<tr> 
-			<td>Costumer name</td>
-			<td><input type="text" name="/costumer/add" id="costumer" value="<%= costumer %>" /></td>
-		</tr>
-		<tr> 
-			<td>Room type</td>
-			<td><input type="text" name="room_type" value="<%= room_type %>" /></td>
-		</tr>
-		<tr> 
-			<td>Pax</td>
-			<td><input type="text" name="pax" value="<%= pax %>" /></td>
-		</tr>
-		<tr> 
-			<td></td>
-			<td><input type="submit" name="Submit" value="add"/></td>
-		</tr>
-	</table>
-</form>
+			<tr style='text-align:left; background-color:#CCC'>
+				<th>Name</th>
+				<th>pax</th>
+				<th>room type</th>
+				<th>room number</th>
+				<th>Status</th>
+				<th>Date</th>
+			</tr>
+			
+			
+			<% if (data) { %>
+			<% data.forEach(function(user){ %>
+				<tr>
+					<td><%= user.name %></td>
+					<td><%= user.pax %></td>
+					<td><%= user.roomtype %></td>
+					<td><%= user.roomnumber %></td>
+					<td><%= user.status %></td>
+					<td><%= user.date %></td>
+
+				</tr>
+			<% }) %>
+			<% } %>
+		
+		</table>
+
+	  </div>
+	  <div class="col-sm-2 sidenav">
+	  </div>
+	</div>
+  </div>
+  
+
 
 
 <%- include ../layouts/footer.ejs %>

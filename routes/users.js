@@ -1,10 +1,10 @@
 var express = require('express')
 var app = express()
 
-
+//costumer active
 app.get('/', function(req, res, next) {
 	req.getConnection(function(error, conn) {
-		conn.query('SELECT * FROM roomindex ORDER BY id DESC',function(err, rows, fields) {
+		conn.query("SELECT * FROM roomindex where status = 'active' ORDER BY date DESC  ",function(err, rows, fields) {
 			
 			if (err) {
 				req.flash('error', err)
@@ -52,8 +52,9 @@ app.post('/add', function(req, res, next){
 			name: req.sanitize('name').escape().trim(),
 			pax: req.sanitize('pax').escape().trim(),
 			roomtype: req.sanitize('roomtype').escape().trim(),
-			roomnumber: req.sanitize('roomnumber').escape().trim()
-
+			roomnumber: req.sanitize('roomnumber').escape().trim(),
+			status: req.sanitize('status').escape().trim(),
+			date: req.sanitize('date').escape().trim()
 		}
 		
 		req.getConnection(function(error, conn) {
@@ -69,7 +70,8 @@ app.post('/add', function(req, res, next){
 						pax: user.pax,
 						roomtype: user.roomtype,
 						roomnumber: user.roomnumber,
-						status: user.status,				
+						status: user.status,
+						date: user.date				
 					})
 				} else {				
 					req.flash('success', 'Data added successfully!')
@@ -81,7 +83,8 @@ app.post('/add', function(req, res, next){
 						pax: '',
 						roomtype: '',
 						roomnumber: '',
-						status: 'Unavailable'					
+						status: 'Unavailable'
+									
 					})
 				}
 			})
@@ -126,7 +129,8 @@ app.get('/edit/(:id)', function(req, res, next){
 					pax: rows[0].pax,
 					roomtype: rows[0].roomtype,
 					roomnumber: rows[0].roomnumber,
-					status: rows[0].status					
+					status: rows[0].status,
+					date: rows[0].date					
 				})
 			}			
 		})
@@ -210,7 +214,7 @@ app.delete('/delete/(:id)', function(req, res, next) {
 	var user = { id: req.params.id }
 	
 	req.getConnection(function(error, conn) {
-		conn.query('DELETE FROM users WHERE id = ' + req.params.id, user, function(err, result) {
+		conn.query('DELETE FROM roomindex WHERE id = ' + req.params.id, user, function(err, result) {
 			
 			if (err) {
 				req.flash('error', err)

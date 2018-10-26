@@ -17,7 +17,7 @@
 						Name
 				</h4>
 				</td>
-				<td><input type="text" name="name" id="name" value="<%= name %>" /></td>
+				<td><input type="text" name="name" id="name" value="<%= name %>" autofocus/></td>
 			</tr>
 			<tr> 
 				<td>
@@ -50,8 +50,18 @@
 				</td>
 			</tr>
 			<tr> 
-				<td></td>
-				<td><input type="submit" name="Submit" value="Edit" /></td>
+				<td>
+						<h4>
+							Date
+						</h4>
+					</td>	
+					<input name="status" type="hidden" value="active"/></td>
+					<td><input name="date" type="date" value="yyyy-dd-MM"/></td>
+
+
+			<tr> 
+				
+				<td><input type="submit" name="Submit" value="Submit" /></td>
 			</tr>
 		</table>
 </form>
