@@ -1,0 +1,60 @@
+
+<%- include ../layouts/header.ejs %>	
+
+<% if (messages.error) { %>
+	<p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+	<p style="color:green"><%- messages.success %></p>
+<% } %>
+
+<form action="/users/add" method="post" name="form1">
+	<table id="customer" width="25%" border="0">
+			<tr> 
+				<td>
+				<h4>
+						Name
+				</h4>
+				</td>
+				<td><input type="text" name="name" id="name" value="<%= name %>" /></td>
+			</tr>
+			<tr> 
+				<td>
+					<h4>
+						Pax
+					</h4>
+				</td>
+				<td><input type="text" name="pax" value="<%= pax %>" /></td>
+			</tr>
+			<tr> 
+				<td>
+					<h4>
+						Room Number
+					</h4>
+				</td>
+				<td><input type="text" name="roomnumber" value="<%= roomnumber %>" /></td>
+			</tr>
+			<tr> 
+				<td>
+						<h4>
+							Room Type
+						</h4>
+					</td>
+				<td>	
+					<select name="roomtype">
+							<option value="Economy">Economy</option>
+							<option value="Suite">Suite</option>
+							<option value="Deluxe">Deluxe</option>
+					</select>
+				</td>
+			</tr>
+			<tr> 
+				<td></td>
+				<td><input type="submit" name="Submit" value="Edit" /></td>
+			</tr>
+		</table>
+</form>
+
+
+<%- include ../layouts/footer.ejs %>

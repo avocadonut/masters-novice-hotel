@@ -1,0 +1,33 @@
+<%- include ../layouts/header.ejs %>	
+
+<% if (messages.error) { %>
+	<p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+	<p style="color:green"><%- messages.success %></p>
+<% } %>
+
+<form action="/" method="post" name="form1">
+	<table width="25%" border="0">
+		<tr> 
+			<td>Costumer name</td>
+			<td><input type="text" name="/costumer/add" id="costumer" value="<%= costumer %>" /></td>
+		</tr>
+		<tr> 
+			<td>Room type</td>
+			<td><input type="text" name="room_type" value="<%= room_type %>" /></td>
+		</tr>
+		<tr> 
+			<td>Pax</td>
+			<td><input type="text" name="pax" value="<%= pax %>" /></td>
+		</tr>
+		<tr> 
+			<td></td>
+			<td><input type="submit" name="Submit" value="add"/></td>
+		</tr>
+	</table>
+</form>
+
+
+<%- include ../layouts/footer.ejs %>
