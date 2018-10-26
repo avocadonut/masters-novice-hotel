@@ -1,0 +1,60 @@
+
+<%- include layouts/header.ejs %>	
+
+<% if (messages.error) { %>
+	<p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+	<p style="color:green"><%- messages.success %></p>
+<% } %>	
+<div class="container-fluid text-center" style="height: 100hv; width: 100% ">    
+	<div class="row content">
+	  <div class="col-sm-2 sidenav">
+		<p><a href="/room">Home</a></p>
+		<p><a href="/room/add">Add room</a></p>
+		<p><a href="/room/update">Link</a></p>
+	  </div>
+	  <!--content active view -->
+	  <div class="col-sm-8 text-left"> 
+		<h1>Rooms </h1>
+		<table id="customer" width='80%' border=0>
+
+		<tr style='text-align:left; background-color:#CCC'>
+        <th>ID</th>
+		<th>ROOM NUMBER</th>
+		<th>ROOM TYPE</th>
+        <th>STATUS</th>
+
+      </tr>
+      			
+		<% if (data) { %>
+        <% data.forEach(function(user){ %>
+          <tr>
+			<td><%= user.id %></td>
+            <td><%= user.roomnumber %></td>
+            <td><%= user.roomtype %></td>
+            <td><%= user.status %></td>
+            <td>
+              <div style="float:left">
+                <a href='/users/edit/<%= user.id %>'>Edit</a> &nbsp;							
+                <form method="post" action="/users/delete/<%= user.id %>" style="float:right">
+                  <input type="submit" name="delete" value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
+                  <input type="hidden" name="_method" value="DELETE" />
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+        <% } %>
+			
+		</table>
+	  </div>
+	  <div class="col-sm-2 sidenav">
+	  </div>
+	</div>
+  </div>
+  
+
+
+<%- include layouts/footer.ejs %>
