@@ -1,10 +1,10 @@
 # masters-novice-hotel
 Room Reservation
-*************************************************************************************************
+**********************
 -> Install XAMPP.
 -> Run XAMPP and start Apache & MySQL.
 -> Access http://localhost/phpmyadmin/ through browser.
--> Create a new database namely "roomlist" then import inside that database the "roomlist.sql".
+-> Create a new database namely "roomname" then import inside the roomname database the "roomname.sql".
 -> The following depedencies (npm) must be installed:
     -> npm install express -save 
     -> npm intall express-validator -save
@@ -17,4 +17,4 @@ Room Reservation
     -> npm install mysql -save
     -> npm install express-myconnection -save
 -> Then run the app.js to access the system.
-*************************************** Nothing Follows ***************************************
+*** Nothing Follows ***
